@@ -41,3 +41,11 @@
     margin-top: 5%;
 }
 
+#question {
+    font-weight: bold;
+    width: 60%;
+    text-align: left;
+    margin-top: 150px;
+    margin-left: 20%;
+    font-size: 40px;
+}

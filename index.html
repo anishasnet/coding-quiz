@@ -7,14 +7,23 @@
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body>
+  <body onload = 'code()'>
     <script src="./assets/javascript/script.js"></script>    
     <div class = "start-page">
-        <h1 class = "title">Coding Quiz Challenge</h1>
+        <h1 class = "title" id = "title">Coding Quiz Challenge</h1>
         <p id = "description">
             Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
         </p>
-        <button class = "button" id = "start-button">Start</button>
+        <button class = "button" id = "start-button" onclick = 'clearScreen()'>Start</button>
+    </div>
+    <p id = "question"></p>
+    <div class = "options">
+        <ul>
+            <li><button class = "button" id = "first-choice" onclick = "checkAnswer()"></button></li>
+            <li><button class = "button" id = "second-choice" onclick = "checkAnswer()"></button></li>
+            <li><button class = "button" id = "third-choice" onclick = "checkAnswer()"></button></li>
+            <li><button class = "button" id = "fourth-choice" onclick = "checkAnswer()"></button></li>
+        </ul>
     </div>
   </body>
 </html>
