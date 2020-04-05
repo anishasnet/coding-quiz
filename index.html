@@ -17,13 +17,14 @@
         <button class = "button" id = "start-button" onclick = 'clearScreen()'>Start</button>
     </div>
     <p id = "question"></p>
-    <div class = "options">
+    <div class = "options" id = "options">
         <ul>
-            <li><button class = "button" id = "first-choice" onclick = "checkAnswer()"></button></li>
-            <li><button class = "button" id = "second-choice" onclick = "checkAnswer()"></button></li>
-            <li><button class = "button" id = "third-choice" onclick = "checkAnswer()"></button></li>
-            <li><button class = "button" id = "fourth-choice" onclick = "checkAnswer()"></button></li>
+            <li><button class = "button button-option" id = "first-choice" onclick = "incrementByOne()"></button></li>
+            <li><button class = "button button-option" id = "second-choice" onclick = "incrementByOne()"></button></li>
+            <li><button class = "button button-option" id = "third-choice" onclick = "incrementByOne()"></button></li>
+            <li><button class = "button button-option" id = "fourth-choice" onclick = "incrementByOne()"></button></li>
         </ul>
     </div>
+
   </body>
 </html>
