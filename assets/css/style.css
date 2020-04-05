@@ -1,0 +1,43 @@
+* {
+    font-family: arial;
+    color:
+}
+.title {
+    text-align: center;
+    margin-top: 10%;
+    position: center;
+    border: 0px;
+    font-size: 60px;
+    font-family: arial;
+    color: purple;
+}
+
+#description {
+    text-align: center;
+    display: flex;
+    font-size: 20px;
+    font-family: arial;
+    color: purple;
+    border: 0px;
+    width: 40%;
+    margin: auto;
+}
+
+.button {
+    font-size: 14px;
+    background-color: #9933ff;
+    color: white;
+    display: block;
+    text-align: center;
+    display: inline-block;
+    border-radius: 8px;
+}
+.button:hover {
+    background-color: #cc33ff;
+}
+#start-button {
+    padding: 10px 30px;  
+    margin-left: 47%;
+    margin-top: 5%;
+}
+
