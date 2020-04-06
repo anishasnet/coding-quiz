@@ -22,17 +22,33 @@ let answers = {
     "String values must be enclosed within _______ when being assigned to variables.": "third-choice",
     "A very useful tool used during development and debugging for printing conent to the debugger is:": "second-choice",
 }
+
 // Not showing the purple option buttons on load.
 function code() {
     document.getElementById("options").style.display = 'none';
     document.getElementById("answer-check").style.display = 'none';
-};
+    document.getElementById("high-score").style.display = 'none';
 
+}
+var seconds = 75;
+function startTimer() {
+    interval = setInterval(function() {
+        document.getElementById("timer").innerHTML = seconds--
+        if (seconds == 0) {
+            document.getElementById("timer").innerHTML = "0";
+            return;
+            console.log("The return did not occur")
+           
+        }
+    }, 1000)
+}
 // Clears the screen when the start button is pressed. Calls the startQuestions() function to begin printing the questions.
 function clearScreen() {
+    startTimer()
     document.getElementById("title").style.display = 'none';
     document.getElementById("description").style.display = 'none';
     document.getElementById("start-button").style.display = 'none';
+   
     document.getElementById("first-choice").addEventListener("click", answerClickEventHandler);
     document.getElementById("second-choice").addEventListener("click", answerClickEventHandler);
     document.getElementById("third-choice").addEventListener("click", answerClickEventHandler);
@@ -41,16 +57,17 @@ function clearScreen() {
 }
 
 let i = 0;
-
+let wrongAnswers = 0;
 function checkAnswer(elementId) {
     document.getElementById("answer-check").style.display = "block"
     if (elementId == answers[questions[i]]) {
-        document.getElementById("check").innerHTML = "Correct!"
+        document.getElementById("check").innerHTML = "Correct!";
     } else {
-        document.getElementById("check").innerHTML = "Wrong."
+        document.getElementById("check").innerHTML = "Wrong.";
+        seconds -= 10;
     }
 }
-
+var score;
 // Prints the question and options.
 function setupQuestion() {
     document.getElementById("options").style.display = 'block';
@@ -61,12 +78,36 @@ function setupQuestion() {
     document.getElementById("fourth-choice").innerHTML = "4. " + choices[questions[i]][3];
 }
 
+function switchToHighScoreSubmition() {
+    document.getElementById("question").style.display = 'none';
+    document.getElementById("options").style.display = 'none';
+    document.getElementById("answer-check").style.display = 'none';
+    document.getElementById("high-score").style.display = 'block';
+}
+
 const answerClickEventHandler = (event) => {
-    console.log(i, event.currentTarget.id);
-    checkAnswer(event.currentTarget.id);
+
     if (i >= 4) {
+        score = document.getElementById("timer").textContent;
+        console.log(wrongAnswers)
+        document.getElementById("score").innerHTML = "Final Score: " + document.getElementById("timer").textContent;
+        document.getElementById("timer").style.display = 'none';
+        switchToHighScoreSubmition();
         return;
     }
+    checkAnswer(event.currentTarget.id);
     i++;
     setupQuestion();
+}
+var initialsBox = document.querySelector("#initials-box");
+var highScores = {};
+var submitButton = document.querySelector("#submit-button");
+submitButton.addEventListener("click", gettingHighScoreAndInitials);
+
+function gettingHighScoreAndInitials(event) {
+    event.preventDefault()
+    var scoreSentence = document.querySelector("#score")
+    highScores[initialsBox.value] = score - wrongAnswers*10;
+    console.log(highScores);
+    return;
 }

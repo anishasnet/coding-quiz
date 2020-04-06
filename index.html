@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body onload = 'code()'>
-    <script src="./assets/javascript/script.js"></script>    
+    <p id = "timer"></p>
     <div class = "start-page">
         <h1 class = "title" id = "title">Coding Quiz Challenge</h1>
         <p id = "description">
@@ -29,5 +29,14 @@
         <hr id = "horizontal-line">
         <p id = "check">Wrong</p>
     </div>
+
+    <div id = "high-score">
+        <p id = "score">Final Score 22</p>
+        <form>
+            <input type = "text" name = "initials" id = "initials-box" placeholder = "Enter initials">
+            <button id = "submit-button" class = "button" type = "submit">Submit</button>
+        </form>
+    </div>
+    <script src="./assets/javascript/script.js"></script>    
   </body>
 </html>
