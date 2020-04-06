@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body onload = 'code()'>
+    <a href = 'highscores.html' id = 'highscore-link'>View Highscores</a>
     <p id = "timer"></p>
+   
     <div class = "start-page">
         <h1 class = "title" id = "title">Coding Quiz Challenge</h1>
         <p id = "description">
@@ -31,10 +33,10 @@
     </div>
 
     <div id = "high-score">
-        <p id = "score">Final Score 22</p>
+        <p id = "score"></p>
         <form>
             <input type = "text" name = "initials" id = "initials-box" placeholder = "Enter initials">
-            <button id = "submit-button" class = "button" type = "submit">Submit</button>
+            <button id = "submit-button" class = "button" type = "submit" onclick = "document.location = 'highscores.html'">Submit</button>
         </form>
     </div>
     <script src="./assets/javascript/script.js"></script>    

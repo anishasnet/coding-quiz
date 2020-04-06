@@ -81,7 +81,7 @@ ul {
 }
 
 #high-score {
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 40%;
     margin-right: 40%;
 }
@@ -109,4 +109,35 @@ ul {
     font-weight: bold;
     font-size: 24px;
     text-align: right;
+}
+
+
+
+.highscore {
+    color: white;
+    background-color: #9933ff;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#highscore-link {
+    color: #9933ff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.highscore-buttons {
+    font-size: 14px;
+    padding: 10px 20px;
+}
+
+.highscore-buttons-centering {
+    margin-left: 40%;
+    margin-top: 20px;
 }

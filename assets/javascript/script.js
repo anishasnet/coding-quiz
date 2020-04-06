@@ -22,7 +22,7 @@ let answers = {
     "String values must be enclosed within _______ when being assigned to variables.": "third-choice",
     "A very useful tool used during development and debugging for printing conent to the debugger is:": "second-choice",
 }
-
+var score;
 // Not showing the purple option buttons on load.
 function code() {
     document.getElementById("options").style.display = 'none';
@@ -36,6 +36,8 @@ function startTimer() {
         document.getElementById("timer").innerHTML = seconds--
         if (seconds == 0) {
             document.getElementById("timer").innerHTML = "0";
+            score = 0;
+            switchToHighScoreSubmition()
             return;
             console.log("The return did not occur")
            
@@ -48,7 +50,6 @@ function clearScreen() {
     document.getElementById("title").style.display = 'none';
     document.getElementById("description").style.display = 'none';
     document.getElementById("start-button").style.display = 'none';
-   
     document.getElementById("first-choice").addEventListener("click", answerClickEventHandler);
     document.getElementById("second-choice").addEventListener("click", answerClickEventHandler);
     document.getElementById("third-choice").addEventListener("click", answerClickEventHandler);
@@ -67,7 +68,7 @@ function checkAnswer(elementId) {
         seconds -= 10;
     }
 }
-var score;
+
 // Prints the question and options.
 function setupQuestion() {
     document.getElementById("options").style.display = 'block';
@@ -82,7 +83,11 @@ function switchToHighScoreSubmition() {
     document.getElementById("question").style.display = 'none';
     document.getElementById("options").style.display = 'none';
     document.getElementById("answer-check").style.display = 'none';
+    document.getElementById("timer").style.display = 'none';
     document.getElementById("high-score").style.display = 'block';
+    if (score == 0) {
+        document.getElementById("score").innerHTML = "Final Score: 0";
+    }
 }
 
 const answerClickEventHandler = (event) => {
@@ -90,7 +95,8 @@ const answerClickEventHandler = (event) => {
     if (i >= 4) {
         score = document.getElementById("timer").textContent;
         console.log(wrongAnswers)
-        document.getElementById("score").innerHTML = "Final Score: " + document.getElementById("timer").textContent;
+        score = document.getElementById("timer").textContent;
+        document.getElementById("score").innerHTML = "Final Score: " + score;
         document.getElementById("timer").style.display = 'none';
         switchToHighScoreSubmition();
         return;
@@ -99,6 +105,7 @@ const answerClickEventHandler = (event) => {
     i++;
     setupQuestion();
 }
+
 var initialsBox = document.querySelector("#initials-box");
 var highScores = {};
 var submitButton = document.querySelector("#submit-button");
@@ -107,7 +114,35 @@ submitButton.addEventListener("click", gettingHighScoreAndInitials);
 function gettingHighScoreAndInitials(event) {
     event.preventDefault()
     var scoreSentence = document.querySelector("#score")
-    highScores[initialsBox.value] = score - wrongAnswers*10;
+    console.log("Storing initials and score")
+    localStorage.setItem(initialsBox.value, score)
+    console.log("Stored initials and score")
+    highScores[initialsBox.value] = score;
     console.log(highScores);
     return;
+}
+function highscoreFunction() {
+    console.log("hi there");
+    let j;
+    let highScoresSorted = {};
+    let sortable = [];
+    function getDataFromLocalStorage() {
+        ol = document.getElementById('list')
+        for (j = 0; j < localStorage.length; j++) {
+            // highScoresSorted[localStorage.key(i)] = localStorage.getItem(localStorage.key(i))
+            let li = document.createElement('li')
+            ol.appendChild(li);
+            li.textContent = localStorage.key(j) + " " + localStorage[localStorage.key(j)]
+            li.className = "highscore";
+
+        }
+    }
+    getDataFromLocalStorage()
+    console.log(sortable);
+    // document.getElementById("test").innerHTML = localStorage['NS']
+}
+
+function clearData() {
+    localStorage.clear()
+    document.location = "index.html"
 }
